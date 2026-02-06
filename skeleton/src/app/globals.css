@@ -1,26 +1,173 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: 210 35% 98%;
+  --foreground: 215 30% 5%;
+  --card: 0 0% 100%;
+  --card-foreground: 215 30% 5%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 215 30% 5%;
+  --primary: 210 95% 55%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 210 20% 94%;
+  --secondary-foreground: 215 30% 5%;
+  --muted: 210 18% 91%;
+  --muted-foreground: 215 20% 35%;
+  --accent: 340 85% 55%;
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 210 18% 91%;
+  --input: 210 15% 94%;
+  --ring: 210 95% 55%;
+  --radius: 0.75rem;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: 220 25% 8%;
+    --foreground: 215 30% 95%;
+    --card: 220 25% 10%;
+    --card-foreground: 215 30% 95%;
+    --popover: 220 25% 10%;
+    --popover-foreground: 215 30% 95%;
+    --secondary: 210 20% 15%;
+    --secondary-foreground: 215 30% 95%;
+    --muted: 210 18% 20%;
+    --muted-foreground: 215 20% 65%;
+    --border: 210 18% 20%;
+    --input: 210 15% 20%;
   }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+}
+
+/* Liquid glass effect */
+.liquid-glass {
+  backdrop-filter: blur(16px);
+  background: rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.1);
+}
+
+@media (prefers-color-scheme: dark) {
+  .liquid-glass {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(210 10% 80%);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(210 10% 70%);
+}
+
+@media (prefers-color-scheme: dark) {
+  ::-webkit-scrollbar-thumb {
+    background: hsl(210 10% 40%);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(210 10% 50%);
+  }
+}
+
+/* Rain animation */
+@keyframes rain-fall {
+  0% {
+    transform: translateY(-100vh) translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) translateX(-20px);
+    opacity: 0.3;
+  }
+}
+
+/* Snow animation */
+@keyframes snow-fall {
+  0% {
+    transform: translateY(-100vh) translateX(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) translateX(-30px) rotate(360deg);
+    opacity: 0.3;
+  }
+}
+
+/* Sun rays animation */
+@keyframes sun-pulse {
+  0%, 100% {
+    opacity: 0.15;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.25;
+    transform: scale(1.05);
+  }
+}
+
+/* Cloud drift animation */
+@keyframes cloud-drift {
+  0% {
+    transform: translateX(-10%);
+  }
+  100% {
+    transform: translateX(110%);
+  }
+}
+
+.rain-drop {
+  animation: rain-fall linear infinite;
+}
+
+.snow-flake {
+  animation: snow-fall linear infinite;
+}
+
+.sun-ray {
+  animation: sun-pulse 4s ease-in-out infinite;
+}
+
+.cloud-element {
+  animation: cloud-drift linear infinite;
 }
