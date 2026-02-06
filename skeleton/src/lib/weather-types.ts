@@ -44,8 +44,8 @@ export function getWeatherCategory(weather: string): "clear" | "clouds" | "rain"
 }
 
 export function getPmLevel(pm: number): { label: string; color: string } {
-  if (pm <= 15) return { label: "Good", color: "text-emerald-400" };
-  if (pm <= 35) return { label: "Moderate", color: "text-yellow-400" };
-  if (pm <= 75) return { label: "Unhealthy", color: "text-orange-400" };
-  return { label: "Very Unhealthy", color: "text-red-400" };
+  if (pm <= 15) return { label: "Good", color: "#34d399" }; // emerald-400
+  if (pm <= 35) return { label: "Moderate", color: "#fbbf24" }; // yellow-400
+  if (pm <= 75) return { label: "Unhealthy", color: "#fb923c" }; // orange-400
+  return { label: "Very Unhealthy", color: "#f87171" }; // red-400
 }
