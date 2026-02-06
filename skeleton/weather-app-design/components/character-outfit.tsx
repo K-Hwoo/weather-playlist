@@ -199,7 +199,7 @@ function CharacterSVG({ outfit }: { outfit: OutfitSet }) {
       )}
 
       {/* Bottom - Pants */}
-      {outfit.bottom === "pants" && !(outfit.top === "tshirt" && outfit.bottom === "shorts") && (
+      {outfit.bottom === "pants" && (
         <g>
           <rect x="40" y="160" width="16" height="70" rx="2" fill={outfit.bottomColor} />
           <rect x="64" y="160" width="16" height="70" rx="2" fill={outfit.bottomColor} />
