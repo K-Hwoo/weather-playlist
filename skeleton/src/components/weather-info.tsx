@@ -100,12 +100,12 @@ export default function WeatherInfo({ current, hourly }: WeatherInfoProps) {
           <p className="text-sm font-bold text-foreground">{current.wind_speed} m/s</p>
         </div>
         <div className="flex flex-col items-center gap-1 bg-secondary/60 rounded-lg px-2 py-2">
-          <Thermometer className="w-4 h-4" style={{ color: pm25Level.color }} />
+          <Thermometer className="w-4 h-4" style={{ color: pm25Level.color.replace("text-", "") }} />
           <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider text-center">PM2.5</p>
           <p className="text-sm font-bold text-foreground">{current.pm25}</p>
         </div>
         <div className="flex flex-col items-center gap-1 bg-secondary/60 rounded-lg px-2 py-2">
-          <Eye className="w-4 h-4" style={{ color: pm10Level.color }} />
+          <Eye className="w-4 h-4" style={{ color: pm10Level.color.replace("text-", "") }} />
           <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider text-center">PM10</p>
           <p className="text-sm font-bold text-foreground">{current.pm10}</p>
         </div>

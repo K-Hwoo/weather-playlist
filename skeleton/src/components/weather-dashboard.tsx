@@ -7,13 +7,15 @@ import WeatherBackground from "@/components/weather-background";
 import WeatherInfo from "@/components/weather-info";
 import YoutubePlaylist from "@/components/youtube-playlist";
 import type { WeatherData, YoutubeVideo } from "@/lib/weather-types";
-
-const weatherFetcher = (url: string) => fetch(url).then((res) => res.json());
+import { weatherFetcher } from "@/lib/api/weather";
 
 interface YoutubeResponse {
   items: YoutubeVideo[];
   query: string;
 }
+
+// YouTube API fetcher (기존 유지)
+const youtubeFetcher = (url: string) => fetch(url).then((res) => res.json() as Promise<YoutubeResponse>);
 
 export default function WeatherDashboard() {
   const [coords, setCoords] = useState<{ lat: number; lon: number } | null>(null);
@@ -61,7 +63,7 @@ export default function WeatherDashboard() {
 
   const { data: youtubeData, isLoading: youtubeLoading } = useSWR<YoutubeResponse>(
     youtubeUrl,
-    weatherFetcher,
+    youtubeFetcher,
     { revalidateOnFocus: false, dedupingInterval: 600000 }
   );
 
